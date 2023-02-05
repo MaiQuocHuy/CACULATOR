@@ -29,47 +29,38 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.b1.setOnClickListener {
-//            binding.tvmain.text = binding.tvmain.text+"1"
             binding.tvmain.text = "${binding.tvmain.text}1"
 
         }
         binding.b2.setOnClickListener {
-//            binding.tvmain.text = binding.tvmain.text+"1"
             binding.tvmain.text = "${binding.tvmain.text}2"
 
         }
         binding.b3.setOnClickListener {
-//            binding.tvmain.text = binding.tvmain.text+"1"
             binding.tvmain.text = "${binding.tvmain.text}3"
 
         }
         binding.b4.setOnClickListener {
-//            binding.tvmain.text = binding.tvmain.text+"1"
             binding.tvmain.text = "${binding.tvmain.text}4"
 
         }
         binding.b5.setOnClickListener {
-//            binding.tvmain.text = binding.tvmain.text+"1"
             binding.tvmain.text = "${binding.tvmain.text}5"
 
         }
         binding.b6.setOnClickListener {
-//            binding.tvmain.text = binding.tvmain.text+"1"
             binding.tvmain.text = "${binding.tvmain.text}6"
 
         }
         binding.b7.setOnClickListener {
-//            binding.tvmain.text = binding.tvmain.text+"1"
             binding.tvmain.text = "${binding.tvmain.text}7"
 
         }
         binding.b8.setOnClickListener {
-//            binding.tvmain.text = binding.tvmain.text+"1"
             binding.tvmain.text = "${binding.tvmain.text}8"
 
         }
         binding.b9.setOnClickListener {
-//            binding.tvmain.text = binding.tvmain.text+"1"
             binding.tvmain.text = "${binding.tvmain.text}9"
         }
 
@@ -91,22 +82,18 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.bplus.setOnClickListener {
-//            binding.tvmain.text = binding.tvmain.text+"+"
             binding.tvmain.text = "${binding.tvmain.text}+"
         }
 
         binding.bmin.setOnClickListener {
-//            binding.tvmain.text = binding.tvmain.text+"-"
             binding.tvmain.text = "${binding.tvmain.text}-"
         }
 
         binding.bmul.setOnClickListener {
-//            binding.tvmain.text = binding.tvmain.text+"x"
             binding.tvmain.text = "${binding.tvmain.text}×"
         }
 
         binding.bdiv.setOnClickListener {
-//            binding.tvmain.text = binding.tvmain.text+"÷"
             binding.tvmain.text = "${binding.tvmain.text}÷"
         }
 
@@ -114,6 +101,7 @@ class MainActivity : AppCompatActivity() {
             try {
                 var text = binding.tvmain.text.toString().trim()
                 var r = Math.sqrt(text.toDouble())
+                binding.tvsec.text = "√${text.toString().trim()}"
                 binding.tvmain.text = r.toString().trim()
             } catch (e: Exception) {
                 binding.tvsec.text = ""
@@ -127,37 +115,30 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.bb2.setOnClickListener {
-//            binding.tvmain.text = binding.tvmain.text+")"
             binding.tvmain.text = "${binding.tvmain.text})"
         }
 
         binding.bpi.setOnClickListener {
-//            binding.tvsec.text = binding.bpi.text.toString().trim()
-//            binding.tvmain.text = binding.tvmain.text+pi
             binding.tvmain.text = "${binding.tvmain.text}${pi}"
 
         }
 
         binding.bsin.setOnClickListener {
-//            binding.tvmain.text = binding.tvmain.text+"sin"
             binding.tvmain.text = "${binding.tvmain.text}sin"
 
         }
 
         binding.bcos.setOnClickListener {
-//            binding.tvmain.text = binding.tvmain.text+"cos"
             binding.tvmain.text = "${binding.tvmain.text}cos"
 
         }
 
         binding.btan.setOnClickListener {
-//            binding.tvmain.text = binding.tvmain.text+"tan"
             binding.tvmain.text = "${binding.tvmain.text}tan"
 
         }
 
         binding.bcot.setOnClickListener {
-//            binding.tvmain.text = binding.tvmain.text+"cot"
             binding.tvmain.text = "${binding.tvmain.text}cot"
 
         }
