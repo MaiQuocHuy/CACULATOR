@@ -117,7 +117,7 @@ class MainActivity : AppCompatActivity() {
                 binding.tvmain.text = r.toString().trim()
             } catch (e: Exception) {
                 binding.tvsec.text = ""
-                binding.tvmain.text = "Enter number before"
+                binding.tvmain.text = "Error syntax(Enter number before)"
             }
         }
 
@@ -186,7 +186,7 @@ class MainActivity : AppCompatActivity() {
                     binding.tvsec.text = "${value.toString().trim()}!"
                 }
             } catch (e: Exception) {
-                binding.tvmain.text = "Error syntax"
+                binding.tvmain.text = "Error syntax(Enter number before)"
                 binding.tvsec.text = ""
             }
         }
@@ -198,7 +198,7 @@ class MainActivity : AppCompatActivity() {
                 binding.tvmain.text = square.toString().trim()
                 binding.tvsec.text = "${doub}²"
             } catch (e: Exception) {
-                binding.tvmain.text = "Error syntax"
+                binding.tvmain.text = "Error syntax(Enter number before)"
                 binding.tvsec.text = ""
             }
         }
@@ -211,7 +211,7 @@ class MainActivity : AppCompatActivity() {
                 binding.tvmain.text = result.toString().trim()
                 binding.tvsec.text = value
             } catch (e: Exception) {
-                binding.tvmain.text = "Error syntax"
+                binding.tvmain.text = "Error syntax(Enter number before)"
                 binding.tvsec.text = ""
             }
         }
@@ -229,92 +229,6 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    //    fun eval(str: String): Double {
-//        return object : Any() {
-//            var pos = -1
-//            var ch = 0
-//            fun nextChar() {
-//                ch = if (++pos < str.length) str[pos].toInt() else -1
-//            }
-//
-//            fun eat(charToEat: Int): Boolean {
-//                while (ch == ' '.code) nextChar()
-//                if (ch == charToEat) {
-//                    nextChar()
-//                    return true
-//                }
-//                return false
-//            }
-//
-//            fun parse(): Double {
-//                nextChar()
-//                val x = parseExpression()
-//                if (pos < str.length) throw RuntimeException("Unexpected: " + ch.toChar())
-//                return x
-//            }
-//
-//            // Grammar:
-//            // expression = term | expression `+` term | expression `-` term
-//            // term = factor | term `*` factor | term `/` factor
-//            // factor = `+` factor | `-` factor | `(` expression `)`
-//            //        | number | functionName factor | factor `^` factor
-//            fun parseExpression(): Double {
-//                var x = parseTerm()
-//                while (true) {
-//                    if (eat('+'.code)) x += parseTerm() // addition
-//                    else if (eat('-'.code)) x -= parseTerm() // subtraction
-//                    else return x
-//                }
-//            }
-//
-//            fun parseTerm(): Double {
-//                var x = parseFactor()
-//                while (true) {
-//                    if (eat('*'.code)) x *= parseFactor() // multiplication
-//                    else if (eat('/'.code)) x /= parseFactor() // division
-//                    else return x
-//                }
-//            }
-//
-////            fun parseFactor(): Double {
-////                if (eat('+'.code)) return parseFactor() // unary plus
-////                if (eat('-'.code)) return -parseFactor() // unary minus
-////                var x: Double
-////                val startPos = pos
-////                if (eat('('.code)) { // parentheses
-////                    x = parseExpression()
-////                    eat(')'.code)
-////                } else if (ch >= '0'.code && ch <= '9'.code || ch == '.'.code) { // numbers
-////                    while (ch >= '0'.code && ch <= '9'.code || ch == '.'.code) nextChar()
-////                    x = str.substring(startPos, pos).toDouble()
-////                } else if (ch >= 'a'.code && ch <= 'z'.code) { // functions
-////                    while (ch >= 'a'.code && ch <= 'z'.code) nextChar()
-////                    val func = str.substring(startPos, pos)
-////                    x = parseFactor()
-////                    x =
-////                        if (func == "sqrt") Math.sqrt(x)
-////                        else if (func == "sin") Math.sin(
-////                            Math.toRadians(
-////                                x
-////                            )
-////                        ) else if (func == "cos") Math.cos(
-////                            Math.toRadians(x)
-////                        ) else if (func == "tan") Math.tan(
-////                            Math.toRadians(x)
-////                        )  else if (func == "log") Math.log10(
-////                            x
-////                        ) else if (func == "ln") Math.log(x) else throw RuntimeException(
-////                            "Unknown function: $func"
-////                        )
-////                } else {
-////                    throw RuntimeException("Unexpected: " + ch.toChar())
-////                }
-////                if (eat('^'.code)) x = Math.pow(x, parseFactor()) // exponentiation
-////                return x
-////            }
-////        }.parse()
-//    }
-//}
     open fun eval(str: String): Double {
         return object : Any() {
             var pos = -1
@@ -332,23 +246,6 @@ class MainActivity : AppCompatActivity() {
                 return false
             }
 
-//        fun parse(): Double {
-//            nextChar()
-//            val x = parseExpression()
-//            if (pos < str.length) binding.tvmain.text = "Error syntax"
-//            return x
-//        }
-
-//        fun parse(): Double {
-//            nextChar()
-//            return try {
-//                parseExpression()
-//            } catch (e: Exception) {
-//                binding.tvmain.text = "Error syntax"
-//                0.0
-//            }
-//        }
-
             fun parse(): Double {
                 nextChar()
                 try {
@@ -361,11 +258,6 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
-            // Grammar:
-            // expression = term | expression `+` term | expression `-` term
-            // term = factor | term `*` factor | term `/` factor
-            // factor = `+` factor | `-` factor | `(` expression `)`
-            //        | number | functionName factor | factor `^` factor
             fun parseExpression(): Double {
                 var x = parseTerm()
                 while (true) {
@@ -384,44 +276,6 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
-            //        fun parseFactor(): Double {
-//            if (eat('+'.code)) return parseFactor() // unary plus
-//            if (eat('-'.code)) return -parseFactor() // unary minus
-//            var x: Double
-//            val startPos = pos
-//            if (eat('('.code)) { // parentheses
-//                x = parseExpression()
-//                eat(')'.code)
-//            } else if (ch >= '0'.code && ch <= '9'.code || ch == '.'.code) { // numbers
-//                while (ch >= '0'.code && ch <= '9'.code || ch == '.'.code) nextChar()
-//                x = str.substring(startPos, pos).toDouble()
-//            } else if (ch >= 'a'.code && ch <= 'z'.code) { // functions
-//                while (ch >= 'a'.code && ch <= 'z'.code) nextChar()
-//                val func = str.substring(startPos, pos)
-//                x = parseFactor()
-//                x =
-//                    if (func == "sqrt") Math.sqrt(x) else if (func == "sin") Math.sin(
-//                        Math.toRadians(
-//                            x
-//                        )
-//                    ) else if (func == "cos") Math.cos(
-//                        Math.toRadians(x)
-//                    ) else if (func == "tan") Math.tan(Math.toRadians(x))
-//                    else if (func == "cot") 1/Math.tan(Math.toRadians(x))
-//                    else if (func == "log") Math.log10(
-//                        x
-//                    )
-//                    else if (func == "ln") Math.log(x)
-//                    else
-//                        throw RuntimeException(
-//                        "Unknown function: $func"
-//                    )
-//            } else {
-//                throw RuntimeException("Unexpected: " + ch.toChar())
-//            }
-//            if (eat('^'.code)) x = Math.pow(x, parseFactor()) // exponentiation
-//            return x
-//        }
             fun parseFactor(): Double {
                 try {
                     if (eat('+'.code)) return parseFactor() // unary plus
@@ -471,69 +325,12 @@ class MainActivity : AppCompatActivity() {
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
         if (newConfig != null) {
-//            if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-//                Toast.makeText(this, "landscape", Toast.LENGTH_SHORT).show();
-////                val tv = TypedValue()
-////                if (this@MainActivity.theme.resolveAttribute(android.R.attr.actionBarSize, tv, true)) {
-////                    Log.d("check", "Into")
-////                    try {
-////                        val actionBarHeight = TypedValue.complexToDimensionPixelSize(tv.data, resources.displayMetrics)
-////                        Log.d("check", "${actionBarHeight}")
-////                        val lLparent = binding.lLparent
-////                        Log.d("check", "${lLparent}")
-////                        val params = lLparent.layoutParams as LinearLayout.LayoutParams
-////                        Log.d("check", "${params}")
-////                        params.height = actionBarHeight
-////                        params.weight = 8f
-////                        Log.d("check", "${params.height}")
-////                        Log.d("check", "${params.weight}")
-////                        binding.lLparent.layoutParams = params
-////                        Log.d("check", "Into5")
-////
-////                    } catch (e: Exception) {
-////                        Log.d("check", "${e.message}")
-////                    }
-////                        val actionBarHeight = TypedValue.complexToDimensionPixelSize(tv.data, resources.displayMetrics)
-////                        Log.d("check", "${actionBarHeight}")
-////                        val lLparent = binding.lLparent
-////                        Log.d("check", "${lLparent}")
-////                        val params = lLparent.layoutParams as LinearLayout.LayoutParams
-////                        Log.d("check", "${params}")
-////                        params.height = actionBarHeight
-////                        params.weight = 8f
-////                        Log.d("check", "${params.height}")
-////                        Log.d("check", "${params.weight}")
-////                        binding.lLparent.layoutParams = params
-//////                        binding.lLparent.requestLayout()
-////                        Log.d("check", "Into5")
-////
-//                }
-        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
-            Toast.makeText(this, "portrait", Toast.LENGTH_SHORT).show();
+            if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+            } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
+            }
         }
     }
 }
-//        val orientation : Int = getResources().getConfiguration().orientation
-//        if (orientation == (Configuration.ORIENTATION_LANDSCAPE))  {
-//            val tv = TypedValue()
-//            if (this@MainActivity.theme.resolveAttribute(android.R.attr.actionBarSize, tv, true)) {
-//                Log.d("check", "Into")
-//                try {
-//                    val actionBarHeight = TypedValue.complexToDimensionPixelSize(tv.data, resources.displayMetrics)
-//                    Log.d("check", "${actionBarHeight}")
-//                    val lLparent = binding.lLparent
-//                    Log.d("check", "${lLparent}")
-//                    val params = lLparent.layoutParams as LinearLayout.LayoutParams
-//                    Log.d("check", "${params}")
-//                    params.height = actionBarHeight
-//                    params.weight = 8f
-//                    Log.d("check", "${params.height}")
-//                    binding.lLparent.layoutParams = params
-//                    Log.d("check", "Into5")
-//
-//                } catch (e: Exception) {
-//                    Log.d("check", "${e.message}")
-//                }
-//            }
-//        }
-//    }
+
