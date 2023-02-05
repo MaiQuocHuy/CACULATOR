@@ -210,7 +210,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    open fun eval(str: String): Double {
+    fun eval(str: String): Double {
         return object : Any() {
             var pos = -1
             var ch = 0
